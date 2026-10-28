@@ -1,32 +1,52 @@
 public class Llamada {
 
-    private int origen;
-    private int destino;
+    public static final int PRECIO_LOCAL = 15;
+    public static final int PRECIO_BANDA_1 = 20;
+    public static final int PRECIO_BANDA_2 = 25;
+    public static final int PRECIO_BANDA_3 = 30;
+
+    private String origen;
+    private String destino;
     private int duracion;
-    private int franja;
+    private int banda;
+    private boolean local;
 
-    public Llamada(int origen, int franja, int duracion, int destino) {
+    public Llamada(String origen,String destino, int duracion, int banda, boolean local) {
         this.origen = origen;
-        this.franja = franja;
-        this.duracion = duracion;
         this.destino = destino;
-    }
-
-    public int getOrigen() {
-        return origen;
-    }
-
-    public int getDestino() {
-        return destino;
-    }
-
-    public int getDuracion() {
-        return duracion;
-    }
-
-    public int getFranja() {
-        return franja;
+        this.duracion = duracion;
+        this.banda = banda;
+        this.local = local;
     }
 
 
+
+
+
+    @Override
+    public String toString() {
+        String tipo;
+        if(local){
+            tipo = "local";
+        }else {
+            tipo= "provicinal";
+        }
+        return " Origen: " + origen+ " Duracion:  "+ duracion+
+                " Banda: "+ banda+ " Tipo: "+ tipo+ " Coste: " + getCost();
+    }
+    // en céntimos
+    public int getCost(){
+        if (local){
+            return 15*duracion;
+        }else {
+            if (banda==1){
+                return 20*duracion;
+            }else
+                if (banda==2){
+                return 25*duracion;
+            }else{
+                    return 30* duracion;
+                }
+        }
+    }
 }
