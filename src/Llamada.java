@@ -19,10 +19,6 @@ public class Llamada {
         this.local = local;
     }
 
-
-
-
-
     @Override
     public String toString() {
         String tipo;
